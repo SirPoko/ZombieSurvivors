@@ -1,5 +1,5 @@
 import wollok.game.*
 object arya {
   var property position = game.center()
-  method image() = 'arya/00.png'
+  method image() = "a00.png"
 }

@@ -1,11 +1,15 @@
 import wollok.game.*
 import src.entities.arya.*
 program main {
-  game.width(50)
-  game.height(25)
-  game.cellSize(20)
+  game.width(100)
+  game.height(50)
+  game.cellSize(10)
   game.title("Monster Survivors")
   game.boardGround("GrassyPath.jpg")
   game.start()
-  game.addVisual(arya)
+  game.addVisualCharacter(arya)
+  keyboard.space().onPressDo { game.say(arya, game.center()) }
+    game.showAttributes(arya)
+
 }
+
