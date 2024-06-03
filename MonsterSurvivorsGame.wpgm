@@ -1,0 +1,31 @@
+import wollok.game.*
+import src.entities.arya.*
+import src.entities.debug.*
+
+program main {
+  game.width(100)
+  
+  game.height(50)
+  
+  game.cellSize(10)
+  
+  game.title("Monster Survivors")
+  
+  game.boardGround("GrassyPath.jpg")
+  
+  game.addVisualCharacter(arya)
+  
+  keyboard.w().onPressDo({ arya.moveUp() })
+  
+  keyboard.a().onPressDo({ arya.moveLeft() })
+  
+  keyboard.s().onPressDo({ arya.moveDown() })
+  
+  keyboard.d().onPressDo({ arya.moveRight() })
+  
+  game.showAttributes(arya)  
+  
+  game.addVisual(texto)
+    
+  game.start()
+}
