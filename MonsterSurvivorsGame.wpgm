@@ -26,6 +26,6 @@ program main {
   game.showAttributes(arya)  
   
   game.addVisual(texto)
-    
+  
   game.start()
 }

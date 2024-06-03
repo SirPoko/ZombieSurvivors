@@ -4,7 +4,7 @@ object arya {
   var property position = game.center()
   var direccion = "3"
   var property paso = 1
-  method image() = "a" + direccion + (paso % 3) + ".png"
+  method image() = "a" + direccion + (paso % 3) + "f.png"
   
   method moveUp() {
     position = position.up(1)
