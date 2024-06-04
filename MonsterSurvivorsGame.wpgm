@@ -1,13 +1,14 @@
 import wollok.game.*
 import src.entities.arya.*
 import src.entities.debug.*
+import src.entities.zombie.*
 
 program main {
-  game.width(100)
+  game.width(25)
   
-  game.height(50)
+  game.height(25)
   
-  game.cellSize(10)
+  game.cellSize(25)
   
   game.title("Monster Survivors")
   
@@ -25,7 +26,10 @@ program main {
   
   game.showAttributes(arya)  
   
-  game.addVisual(texto)
+  
   
   game.start()
+
+  
+
 }
