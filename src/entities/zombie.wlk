@@ -34,5 +34,7 @@ object zombie {
     
     paso = self.paso() + 1
   }
+
   
+
  }

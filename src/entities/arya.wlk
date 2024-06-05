@@ -70,7 +70,7 @@ object zombie {
   
   method seguir() {
     
-    var aryaX = arya.position().toString().split("@")[0]
+    const aryaX = arya.position().toString().split("@")[0]
     return aryaX
   }
 }
