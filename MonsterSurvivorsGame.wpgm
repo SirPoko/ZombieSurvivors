@@ -1,35 +1,23 @@
 import wollok.game.*
+import src.engine.movimiento.*
 import src.entities.arya.*
 import src.entities.debug.*
 import src.entities.zombie.*
 
 program main {
-  game.width(25)
-  
-  game.height(25)
-  
-  game.cellSize(25)
-  
+  game.width(20)
+  game.height(14)
+  game.cellSize(50)
   game.title("Monster Survivors")
-  
   game.boardGround("GrassyPath.jpg")
-  
-  game.addVisualCharacter(arya)
-  
+  game.addVisualCharacter(arya )
+   
   keyboard.w().onPressDo({ arya.moveUp() })
-  
   keyboard.a().onPressDo({ arya.moveLeft() })
-  
   keyboard.s().onPressDo({ arya.moveDown() })
-  
   keyboard.d().onPressDo({ arya.moveRight() })
   
-  game.showAttributes(arya)  
-  
-  
-  
+  game.schedule(5000, { spawn.zombie(1) game.say(arya, "Zombiees!! ") })
+  game.onTick(3000, "moverEnemigos", spawn.moverZombies() )
   game.start()
-
-  
-
 }

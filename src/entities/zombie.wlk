@@ -1,40 +1,68 @@
 import wollok.game.*
 
-object zombie {
-  var property position = game.origin()
-  var direccion = "3"
+class Zombies {
+  var property position = game.at(3, 3)
+  var direction = "0"
   var property paso = 1
   
-  method image() = (("z" + direccion) + (paso % 3)) + ".png"
+  method image() = (("z" + direction) + (paso % 3)) + ".png"
   
   method moveUp() {
     position = position.up(1)
-    direccion = "3"
+    direction = "3"
+    
+    
+    
+    
     
     paso = self.paso() + 1
   }
   
   method moveDown() {
     position = position.down(1)
-    direccion = "0"
+    direction = "0"
+    
+    
+    
+    
     
     paso = self.paso() + 1
   }
   
   method moveLeft() {
     position = position.left(1)
-    direccion = "1"
+    direction = "1"
+    
+    
+    
+    
     
     paso = self.paso() + 1
   }
   
   method moveRight() {
     position = position.right(1)
-    direccion = "2"
+    direction = "2"
+    
+    
     
     paso = self.paso() + 1
   }
-
+}
+//Spawn de zombies
+object spawn {
+  var property zombieL = []
   
-
- }
+  method zombie(cantidad) {
+    if (zombieL.size() < cantidad) {
+      const zombieNew = new Zombies()
+      game.addVisual(zombieNew)
+      zombieL.add(zombieNew)
+    }
+  }
+  
+  method moverZombies() {
+    if (zombieL.size() > 0) zombieL.forEach({ z => z.moveUp() })
+    
+  }
+}
