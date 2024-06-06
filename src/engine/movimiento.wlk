@@ -8,20 +8,20 @@ object movimiento {
     const difX = who.position().x() - toWho.position().x()
     const difY = who.position().y() - toWho.position().y()
     if (difX.abs() > difY.abs()) {
-      if (difX > 0) {
-        self.up(who)
-        return "arriba"
-      } else {
-        self.down(who)
-        return "abajo"
-      }
-    } else {
-      if (difY > 0) {
+      if (difX < 0) {
         self.right(who)
-        return "derecha"
+        
       } else {
         self.left(who)
-        return "izquierda"
+        
+      }
+    } else {
+      if (difY < 0) {
+        self.up(who)
+        
+      } else {
+        self.down(who)
+        
       }
     }
   }

@@ -18,6 +18,7 @@ program main {
   keyboard.d().onPressDo({ arya.moveRight() })
   
   game.schedule(5000, { spawn.zombie(1) game.say(arya, "Zombiees!! ") })
-  game.onTick(3000, "moverEnemigos", spawn.moverZombies() )
+  game.onTick(1000, "moverEnemigos", {spawn.moverZombies()} )
+  
   game.start()
 }
