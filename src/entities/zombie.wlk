@@ -4,7 +4,7 @@ import src.entities.arya.*
 
 class Zombies {
   var property position = game.at(3, 3)
-  var direction = "0"
+  var property direction = "0"
   var property paso = 1
   
   method image() = (("z" + direction) + (paso % 3)) + ".png"
@@ -55,8 +55,9 @@ class Zombies {
     paso = self.paso() + 1
   }
   
-  method chocar() {
+  method chocar(entity) {
     game.say(arya, "auch")
+    
   }
 } //Spawn de zombies
 

@@ -3,7 +3,7 @@ import wollok.game.*
 object arya {
   
   var property position = game.at(7,7)
-  var direction = "3"
+  var property direction = "3"
   var property paso = 1
   
   method image() = "a" + direction + (paso % 3) + ".png"
