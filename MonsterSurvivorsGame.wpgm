@@ -11,7 +11,7 @@ program main {
   game.title("Monster Survivors")
   game.boardGround("GrassyPath.jpg")
   game.addVisualCharacter(arya )
-   
+  //game.addVisual(texto)
   keyboard.w().onPressDo({ arya.moveUp() })
   keyboard.a().onPressDo({ arya.moveLeft() })
   keyboard.s().onPressDo({ arya.moveDown() })
@@ -19,6 +19,6 @@ program main {
   
   game.schedule(5000, { spawn.zombie(1) game.say(arya, "Zombiees!! ") })
   game.onTick(1000, "moverEnemigos", {spawn.moverZombies()} )
-  
+  game.onCollideDo(arya,{elemento => elemento.chocar()}) 
   game.start()
 }
