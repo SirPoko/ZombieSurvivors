@@ -5,7 +5,7 @@ import src.entities.debug.*
 import src.entities.zombie.*
 
 program main {
-  game.width(20)
+  game.width(21)
   game.height(14)
   game.cellSize(50)
   game.title("Monster Survivors")
