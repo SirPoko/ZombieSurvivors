@@ -1,5 +1,4 @@
 import wollok.game.*
-
 object arya {
   
   var property position = game.at(7,7)

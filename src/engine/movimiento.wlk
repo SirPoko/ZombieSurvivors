@@ -3,7 +3,7 @@ import src.entities.arya.*
 import src.entities.zombie.*
 
 object movimiento {
-  var posicionesOcupadas = [arya.position()]
+  var posicionesOcupadas = []
   
   method seguir(entity, target) {
     const difX = entity.position().x() - target.position().x()
@@ -15,6 +15,10 @@ object movimiento {
     }
   }
   
+  method movValido(aDonde) {
+    return (posicionesOcupadas.contains(aDonde))
+  }
+
   //metodos para mover la entity en distintas direcciones, comprobando que la casilla no este ocupada
   method up(entity) {
     const aDonde = entity.position().up(1)
@@ -65,9 +69,19 @@ object movimiento {
     
     const nuevasPosiciones = posicionesOcupadas.filter({ p => p != entity.position() }) // Filtrar las posiciones ocupadas para eliminar la posición anterior del objeto
     
-    nuevasPosiciones.add(nuevaPosicion) // Agregar la nueva posición de la entity
+    posicionesOcupadas = nuevasPosiciones.add(nuevaPosicion) // Agregar la nueva posición de la entity
     
-    posicionesOcupadas = nuevasPosiciones // Asignar las nuevas posiciones a posicionesOcupadas
+   
+    
+  }
+
+   method actualizarPosicion2(entity, nuevaPosicion) {
+    
+    const nuevasPosiciones = posicionesOcupadas.filter({ p => p != entity.position() }) // Filtrar las posiciones ocupadas para eliminar la posición anterior del objeto
+    
+    posicionesOcupadas = nuevasPosiciones.add(nuevaPosicion) // Agregar la nueva posición de la entity
+    
+   
     
   }
 }
