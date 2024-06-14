@@ -1,7 +1,6 @@
 import wollok.game.*
 
 object texto {
-  method position() = game.at(8,8)
-  method text() = "puto el que lee"
-  
+   method image() = "id" + ".png" //imagenes y animacion al caminar
+    var property position = game.at(8, 8)
 }
