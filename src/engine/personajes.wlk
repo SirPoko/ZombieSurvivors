@@ -1,5 +1,8 @@
 import movimiento.*
 import armas.*
+import src.entities.debug.*
+
+
 class Personaje {
   var property position = game.at(3, 3)
   var property direction = "3" //variable que indica hacia donde mira el personaje
@@ -14,9 +17,7 @@ class Personaje {
   }
   
   method atacar() {
-  game.say(self,"Toma esto!!")
-    
-    espada.ataque(self)
+
   }
 
   //metodos para mover el personaje
@@ -68,6 +69,7 @@ class Personaje {
     direction = "2"
     step = self.step() + 1
     position = position.right(dist)}  
+    
   }
 
 //metodos para empujar el personaje
@@ -120,7 +122,12 @@ class Enemigo inherits Personaje {
 }
 
 object link inherits Heroe {
-    override method image() = "a" + direction + (step % 3) + ".png"
+  override method image() = "a" + direction + (step % 3) + ".png"
+  override method atacar() {
+    game.say(self,"Toma esto!!")
+    espada.ataque(self)
+  }
+  
 }
 
 

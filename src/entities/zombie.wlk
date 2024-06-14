@@ -7,6 +7,8 @@ class Zombies {
   var property position = game.at(3, 3)
   var property direction = "0"
   var property paso = 1
+  var property vidaMax = 0
+  var property vidaActual = 0
   
   method image() = (("z" + direction) + (paso % 3)) + ".png"
   
@@ -60,7 +62,21 @@ class Zombies {
     game.say(arya, "auch")
     
   }
-} //Spawn de zombies
+
+  // metodos para ganar o perder vida
+
+  method perderVida(cantidad) {
+    game.say(self,"Ay me pegaron:" + cantidad)
+    vidaActual = (vidaActual - cantidad).max(0)
+  }
+
+  method ganarVida(cantidad) {
+    vidaActual = (vidaActual + cantidad).min(vidaMax)
+  }
+} 
+
+
+//Spawn de zombies
 
 object spawn {
   var property zombieL = []
@@ -73,7 +89,9 @@ object spawn {
     }
   }
   
+  
   method moverZombies() {
     if (zombieL.size() > 0) zombieL.forEach({ z => movimiento.seguir(z, link) })
   }
+
 }

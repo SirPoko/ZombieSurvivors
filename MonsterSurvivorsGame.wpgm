@@ -13,15 +13,16 @@ program main {
   game.title("Monster Survivors")
   game.boardGround("GrassyPath.jpg")
   game.addVisualCharacter(link )
-  //game.addVisual(texto)
+  game.addVisual(texto)
+  
   keyboard.w().onPressDo({ link.moveUp(1) })
   keyboard.a().onPressDo({ link.moveLeft(1) })
   keyboard.s().onPressDo({ link.moveDown(1) })
   keyboard.d().onPressDo({ link.moveRight(1)})
-  keyboard.e().onPressDo({game.addVisual(new Golpe())})
+  
   keyboard.space().onPressDo({link.atacar()})
+  
   game.schedule(5000, { spawn.zombie(1) game.say(link, "Zombiees!! ") })
   game.onTick(500, "moverEnemigos", {spawn.moverZombies()} )
-  //game.onCollideDo(arya,{elemento => elemento.chocar(arya)}) 
   game.start()
 }
