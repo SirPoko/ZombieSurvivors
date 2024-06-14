@@ -1,6 +1,7 @@
 import wollok.game.*
 import src.engine.movimiento.*
 import src.entities.arya.*
+import src.engine.personajes.*
 
 class Zombies {
   var property position = game.at(3, 3)
@@ -27,7 +28,7 @@ class Zombies {
     
     
     
-    
+  
     
     
     paso = self.paso() + 1
@@ -73,6 +74,6 @@ object spawn {
   }
   
   method moverZombies() {
-    if (zombieL.size() > 0) zombieL.forEach({ z => movimiento.seguir(z, arya) })
+    if (zombieL.size() > 0) zombieL.forEach({ z => movimiento.seguir(z, link) })
   }
 }

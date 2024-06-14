@@ -3,7 +3,7 @@ import src.entities.arya.*
 import src.entities.zombie.*
 
 object movimiento {
-  var posicionesOcupadas = [arya.position()]
+  var property posicionesOcupadas = [arya.position()]
   
   method seguir(entity, target) {
     const difX = entity.position().x() - target.position().x()
@@ -14,6 +14,9 @@ object movimiento {
       if (difY < 0) self.up(entity) else self.down(entity)
     }
   }
+
+
+  method posicionOcupada(aDonde) = posicionesOcupadas.contains(aDonde)
 
   //metodos para mover la entity en distintas direcciones, comprobando que la casilla no este ocupada
   method up(entity) {
