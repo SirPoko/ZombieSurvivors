@@ -107,7 +107,7 @@ class Personaje {
 }
 
 class Heroe inherits Personaje {
-  
+  var equipamiento = []
 }
 
 class Enemigo inherits Personaje {
