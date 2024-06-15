@@ -6,10 +6,11 @@ import src.entities.zombie.*
 import src.engine.personajes.*
 import src.engine.armas.*
 
+
 program main {
   game.width(21)
   game.height(15)
-  game.cellSize(50)
+  game.cellSize(48)
   game.title("Monster Survivors")
   game.boardGround("GrassyPath.jpg")
   game.addVisualCharacter(link )

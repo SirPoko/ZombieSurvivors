@@ -2,53 +2,59 @@ import personajes.*
 import wollok.game.*
 import src.entities.zombie.*
 
+
+class Golpe {
+  
+}
+
 class Armas {
   const property damage = 1
   const property empuje = 1
   const property enfriamiento = 1
   const property rangoX = 1
   const property rangoY = 2
-  var property area = []
+  var property areaGolpeada = []
   
   method image() = "arma.png"
   
-  method generarGolpe(x, y) {
-    const posicionX = x
-    
-    const posicionY = y
-  }
-  
+  //logica para el ataque del arma
   method ataque(entity) {
-    const posicionX = entity.position().x()
-    const posicionY = entity.position().y()
-    if (entity.direction() == "2") {
-      area.add(game.at(posicionX + 1, posicionY + 1))
-      area.add(game.at(posicionX + 2, posicionY + 1))
-      area.add(game.at(posicionX + 1, posicionY))
-      area.add(game.at(posicionX + 2, posicionY))
-      area.add(game.at(posicionX + 1, posicionY - 1))
-      area.add(game.at(posicionX + 2, posicionY - 1))
-    }
-    const golpeados = self.verificarGolpe()
-    golpeados.forEach(
-      { e => e.perderVida(damage)})
-    area = []
+
   }
   
-  method verificarGolpe() {
-    return spawn.zombieL().filter(
-      { enemigo => area.contains(enemigo.position()) }
-    )
-  }
+  //en este metodo se verifica si el area golpeada coincide con la posicion de los objetos en la lista indicada
+  method verificarGolpe() = spawn.zombieL().filter(
+    { enemigo => areaGolpeada.contains(enemigo.position()) }
+  )
 }
 
-class Golpe {
-  var property position = game.origin()
-  var property fuerza
-  
-  method image() = "x.png" //imagenes y animacion al caminar
-}
 
 object espada inherits Armas {
-  
+override method ataque(entity) {
+    const posicionX = entity.position().x()
+    const posicionY = entity.position().y()
+    
+    //se calcula el area golpeada en base a la posicion del personaje que esta atacando en el caso de la espada, el ataque se realiza a ambos lados del personaje
+    areaGolpeada.add(game.at(posicionX - 1, posicionY + 1))
+    areaGolpeada.add(game.at(posicionX - 2, posicionY + 1))
+    areaGolpeada.add(game.at(posicionX - 1, posicionY))
+    areaGolpeada.add(game.at(posicionX - 2, posicionY))
+    areaGolpeada.add(game.at(posicionX - 1, posicionY - 1))
+    areaGolpeada.add(game.at(posicionX - 2, posicionY - 1))
+    areaGolpeada.add(game.at(posicionX + 1, posicionY + 1))
+    areaGolpeada.add(game.at(posicionX + 2, posicionY + 1))
+    areaGolpeada.add(game.at(posicionX + 1, posicionY))
+    areaGolpeada.add(game.at(posicionX + 2, posicionY))
+    areaGolpeada.add(game.at(posicionX + 1, posicionY - 1))
+    areaGolpeada.add(game.at(posicionX + 2, posicionY - 1))
+    //game.addVisual(new Golpe(position = entity.position, image= "slashr.png" ))
+    // se utiliza el meotdo verificar golpe para determinar si hay enemigos en ese area
+    const golpeados = self.verificarGolpe()
+    
+    // cada uno de los enemigos golpeados recibe daño
+    golpeados.forEach({ e => e.perderVida(damage) })
+    
+    //se vacia el area golpeada luego de ya haber realizado el daño
+    areaGolpeada = []
+} 
 }
