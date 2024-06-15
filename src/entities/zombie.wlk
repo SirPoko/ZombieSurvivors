@@ -68,6 +68,8 @@ class Zombies {
   method perderVida(cantidad) {
     game.say(self,"Ay me pegaron:" + cantidad)
     vidaActual = (vidaActual - cantidad).max(0)
+     movimiento.actualizarPosicion(self,self.position().right(1))
+    position = position.right(1)
   }
 
   method ganarVida(cantidad) {
