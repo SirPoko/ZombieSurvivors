@@ -1,7 +1,7 @@
 import personajes.*
 import wollok.game.*
 import src.entities.zombie.*
-
+import src.engine.enemigos.*
 class Armas {
   const property damage = 1
   const property empuje = 1
@@ -20,14 +20,14 @@ class Armas {
   }
   //en este metodo se verifica si el area golpeada coincide con la posicion de los objetos en la lista indicada
   
-  method verificarGolpe() = spawn.zombieL().filter(
+  method verificarGolpe() = spawner.enemigos().filter(
     { enemigo => areaGolpeada.contains(enemigo.position()) }
   )
 }
 
-class Golpe {
+class AnimacionGolpe {
   var property position = game.origin()
-  const imagen
+  var property imagen  
   method image() = imagen + ".png" //imagenes y animacion al caminar
 }
 
@@ -52,19 +52,23 @@ object espada inherits Armas {
     areaGolpeada.add(game.at(posicionX + 1, posicionY - 1))
     areaGolpeada.add(game.at(posicionX + 2, posicionY - 1))
     
-    self.animacionAtaque(link)
+    self.animacionAtaque(entity)
     
     const golpeados = self.verificarGolpe()
     // cada uno de los enemigos golpeados recibe daño
-    
+    golpeados.forEach({ e => e.pushRight(empuje) })
     golpeados.forEach({ e => e.perderVida(damage) })
     //se vacia el area golpeada luego de ya haber realizado el daño
     areaGolpeada = []
   }
 
   method animacionAtaque(entity) {
-    const golpeEspada = new Golpe (position = entity.position(), imagen = "slashr")
+    const posicionX = entity.position().x() -1
+    const posicionY = entity.position().y() -2
+    const golpeEspada = new AnimacionGolpe (position = game.at(posicionX , posicionY), imagen = "corteDerecha")
+    game.sound("linkSword.wav").play()
     game.addVisual(golpeEspada)
-    game.schedule(500, game.removeVisual(golpeEspada))
+    game.schedule(300, {game.removeVisual(golpeEspada)})
   }
 }
+

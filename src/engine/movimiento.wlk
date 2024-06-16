@@ -4,7 +4,13 @@ import src.entities.zombie.*
 
 object movimiento {
   var property posicionesOcupadas = [arya.position()]
-  
+
+  method comprobarAdyacencia(entity, target) {
+    const difX = entity.position().x() - target.position().x()
+    const difY = entity.position().y() - target.position().y()   
+    return difX.abs() + difY.abs() == 1
+  }
+
   method seguir(entity, target) {
     const difX = entity.position().x() - target.position().x()
     const difY = entity.position().y() - target.position().y()
@@ -12,6 +18,16 @@ object movimiento {
       if (difX < 0) self.right(entity) else self.left(entity)
     } else {
       if (difY < 0) self.up(entity) else self.down(entity)
+    }
+  }
+
+   method seguir2(entity, target) {
+    const difX = entity.position().x() - target.position().x()
+    const difY = entity.position().y() - target.position().y()
+    if (difX.abs() > difY.abs()) {
+      if (difX < 0) entity.moveRight(1) else entity.moveLeft(1)
+    } else {
+      if (difY < 0) entity.moveUp(1) else entity.moveDown(1)
     }
   }
 

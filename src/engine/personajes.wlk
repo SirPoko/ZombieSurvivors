@@ -7,8 +7,8 @@ class Personaje {
   var property position = game.at(3, 3)
   var property direction = "3" //variable que indica hacia donde mira el personaje
   var property step = 1        //variable utilizada para "animar" el movimiento
-  var property vidaMax = 0
-  var property vidaActual = 0
+  var property vidaMax 
+  var property vidaActual 
   
   method image() = "id" + direction + (step % 3) + ".png" //imagenes y animacion al caminar
   
@@ -110,18 +110,9 @@ class Heroe inherits Personaje {
   var equipamiento = []
 }
 
-class Enemigo inherits Personaje {
-  override method activarse  () {
-    
-  }
 
-  method seguir() {
-    
-  }
 
-}
-
-object link inherits Heroe {
+object link inherits Heroe(vidaMax = 100, vidaActual = 100) {
   override method image() = "a" + direction + (step % 3) + ".png"
   override method atacar() {
     game.say(self,"Toma esto!!")

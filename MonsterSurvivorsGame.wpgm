@@ -5,6 +5,7 @@ import src.entities.debug.*
 import src.entities.zombie.*
 import src.engine.personajes.*
 import src.engine.armas.*
+import src.engine.enemigos.*
 
 
 program main {
@@ -23,7 +24,7 @@ program main {
   
   keyboard.space().onPressDo({link.atacar()})
   
-  game.schedule(5000, { spawn.zombie(1) game.say(link, "Zombiees!! ") })
-  game.onTick(500, "moverEnemigos", {spawn.moverZombies()} )
+  game.onTick(2000, "spawnZombie", { spawner.spawn()})
+  game.onTick(2000, "activarEnemigos", {spawner.activarEnemigos()})
   game.start()
 }
