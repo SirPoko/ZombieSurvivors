@@ -1,9 +1,9 @@
 import wollok.game.*
-import src.entities.arya.*
-import src.entities.zombie.*
+
+
 
 object movimiento {
-  var property posicionesOcupadas = [arya.position()]
+  var property posicionesOcupadas = []
 
   method comprobarAdyacencia(entity, target) {
     const difX = entity.position().x() - target.position().x()

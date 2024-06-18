@@ -1,6 +1,6 @@
 import personajes.*
 import wollok.game.*
-import src.entities.zombie.*
+
 import src.engine.enemigos.*
 class Armas {
   const property damage = 1
