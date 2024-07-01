@@ -1,5 +1,6 @@
-import movimiento.*
-import armas.*
+import enemigos.*
+import src.engine.movimiento.*
+import src.engine.armas.*
 import src.entities.debug.*
 
 
@@ -24,7 +25,7 @@ class Personaje {
   method moveUp(dist) {
     const posicionSiguiente = self.position().up(dist)
     
-    if (movimiento.posicionOcupada(posicionSiguiente))
+    if (movimiento.posicionOcupada2(posicionSiguiente))
     {direction = "3"}
     else
     {movimiento.actualizarPosicion(self,self.position().up(dist))
@@ -38,7 +39,7 @@ class Personaje {
   method moveDown(dist) {
     const posicionSiguiente = self.position().down(dist)
     
-    if (movimiento.posicionOcupada(posicionSiguiente))
+    if (movimiento.posicionOcupada2(posicionSiguiente))
     {direction = "0"}
     else
     {movimiento.actualizarPosicion(self,self.position().down(dist))
@@ -50,7 +51,7 @@ class Personaje {
   method moveLeft(dist) {
     const posicionSiguiente = self.position().left(dist)
     
-    if (movimiento.posicionOcupada(posicionSiguiente))
+    if (movimiento.posicionOcupada2(posicionSiguiente))
     {direction = "1"}
     else
     {movimiento.actualizarPosicion(self,self.position().left(dist))
@@ -62,7 +63,7 @@ class Personaje {
   method moveRight(dist) {
     const posicionSiguiente = self.position().right(dist)
     
-    if (movimiento.posicionOcupada(posicionSiguiente))
+    if (movimiento.posicionOcupada2(posicionSiguiente))
     {direction = "2"}
     else
     {movimiento.actualizarPosicion(self,self.position().right(dist))
@@ -97,6 +98,14 @@ class Personaje {
 
   method perderVida(cantidad) {
     vidaActual = (vidaActual - cantidad).max(0)
+    if (vidaActual == 0) {
+      game.removeVisual(self)
+      spawner.remove(self)
+      
+
+    }
+      
+    
   }
 
   method ganarVida(cantidad) {
@@ -106,19 +115,6 @@ class Personaje {
 
 }
 
-class Heroe inherits Personaje {
-  var equipamiento = []
-}
 
-
-
-object link inherits Heroe(vidaMax = 100, vidaActual = 100) {
-  override method image() = "a" + direction + (step % 3) + ".png"
-  override method atacar() {
-    game.say(self,"Toma esto!!")
-    espada.ataque(self)
-  }
-  
-}
 
 

@@ -3,9 +3,9 @@ import src.engine.movimiento.*
 
 import src.entities.debug.*
 
-import src.engine.personajes.*
+import src.entities.personajes.*
 import src.engine.armas.*
-import src.engine.enemigos.*
+import src.entities.enemigos.*
 
 
 program main {
@@ -26,5 +26,8 @@ program main {
   
   game.onTick(2000, "spawnZombie", { spawner.spawn()})
   game.onTick(500, "activarEnemigos", {spawner.activarEnemigos()})
+  
+  game.onCollideDo(link, {o => o.serAgarrado()})
+  
   game.start()
 }

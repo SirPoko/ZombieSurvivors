@@ -1,9 +1,9 @@
-import personajes.*
+import src.entities.personajes.*
 import wollok.game.*
+import src.entities.enemigos.*
 
-import src.engine.enemigos.*
 class Armas {
-  const property damage = 1
+  const property damage = 5
   const property empuje = 1
   const property enfriamiento = 1
   const property rangoX = 1
@@ -32,6 +32,7 @@ class AnimacionGolpe {
 }
 
 object espada inherits Armas {
+  
   override method ataque(entity) {
     const posicionX = entity.position().x()
     const posicionY = entity.position().y()

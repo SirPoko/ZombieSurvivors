@@ -1,5 +1,5 @@
-import movimiento.*
-import src.engine.personajes.*
+import src.engine.movimiento.*
+import src.entities.personajes.*
 import src.engine.armas.*
 
 class Enemigo inherits Personaje {
@@ -17,7 +17,7 @@ class Enemigo inherits Personaje {
 
 class Zombie inherits Enemigo (vidaMax = 10, vidaActual = 10, atkDamage = 5) {
   override method image() = (("z" + direction) + (step % 3)) + ".png"
-
+  
   override method atacar() {
     const garrazo = new AnimacionGolpe(
       position = link.position(),
@@ -34,22 +34,30 @@ class Zombie inherits Enemigo (vidaMax = 10, vidaActual = 10, atkDamage = 5) {
 }
 
 object spawner {
-  var property enemigos = []
+  const property enemigos = []
+  
   
   method spawn() {
-    const nuevoZombie = new Zombie()
-    if (enemigos.size() < 5) {game.addVisual(nuevoZombie)
-    enemigos.add(nuevoZombie)}
-    
+    if (enemigos.size() < 1) {
+      const nuevoZombie = new Zombie()
+      game.addVisual(nuevoZombie)
+      enemigos.add(nuevoZombie)
+    }
   }
   
   method activarEnemigos() {
-   if (enemigos.size() > 0) enemigos.forEach({ z => z.activarse()})}
-
+    if (enemigos.size() > 0) enemigos.forEach({ z => z.activarse() })
+  }
+  
   method remove(enemigo) {
     if (enemigos.contains(enemigo)) {
       game.removeVisual(enemigo)
       enemigos.remove(enemigo)
     }
+  }
+  
+  method hayEnemigo(posicion) {
+    const posicionEnemigos = enemigos.map({ e => e.position() })
+    return posicionEnemigos.contains(posicion)
   }
 }
