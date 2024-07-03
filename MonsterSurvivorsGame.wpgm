@@ -1,11 +1,12 @@
 import wollok.game.*
 import src.engine.movimiento.*
-
-import src.entities.debug.*
+import src.engine.armas.*
 
 import src.entities.personajes.*
-import src.engine.armas.*
 import src.entities.enemigos.*
+import src.entities.heroes.*
+
+import src.entities.debug.*
 
 
 program main {

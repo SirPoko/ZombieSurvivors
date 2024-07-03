@@ -5,7 +5,13 @@ class Heroe inherits Personaje {
   var exp = 0
   var nivel = 1
 
-  
+  method ganarExp(cantidad) {
+    exp =+ cantidad
+  }
+
+  method subirNivel() {
+    
+  }
 }
 
 

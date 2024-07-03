@@ -1,6 +1,7 @@
 import wollok.game.*
-import src.entities.enemigos.*
 import src.entities.personajes.*
+import src.entities.enemigos.*
+import src.entities.heroes.*
 
 
 object movimiento {

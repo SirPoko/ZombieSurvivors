@@ -1,6 +1,7 @@
 import src.engine.movimiento.*
-import src.entities.personajes.*
 import src.engine.armas.*
+import src.entities.personajes.*
+import src.entities.heroes.*
 
 class Enemigo inherits Personaje {
   const atkDamage
@@ -11,6 +12,10 @@ class Enemigo inherits Personaje {
   }
   
   method moverse() {
+    
+  }
+
+  method dejarDrop() {
     
   }
 }

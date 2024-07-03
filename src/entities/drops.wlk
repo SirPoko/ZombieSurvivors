@@ -1,3 +1,5 @@
+import src.entities.heroes.*
+
 class Orbes{
 
     var property position
